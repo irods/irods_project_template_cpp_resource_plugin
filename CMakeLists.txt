@@ -42,8 +42,6 @@ if (IRODS_BUILD_WITH_WERROR)
   add_compile_options(-Werror)
 endif()
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
-
 set(RULE_ENGINE_PLUGIN_NAME irods_resource_plugin-nop)
 
 add_library(${RULE_ENGINE_PLUGIN_NAME} MODULE ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
