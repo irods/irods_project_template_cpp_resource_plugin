@@ -42,21 +42,21 @@ if (IRODS_BUILD_WITH_WERROR)
   add_compile_options(-Werror)
 endif()
 
-set(RULE_ENGINE_PLUGIN_NAME irods_resource_plugin-nop)
+set(IRODS_RESOURCE_PLUGIN_NAME irods_resource_plugin-nop)
 
-add_library(${RULE_ENGINE_PLUGIN_NAME} MODULE ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
+add_library(${IRODS_RESOURCE_PLUGIN_NAME} MODULE ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
 
-target_compile_options(${RULE_ENGINE_PLUGIN_NAME} PRIVATE -Wno-write-strings)
+target_compile_options(${IRODS_RESOURCE_PLUGIN_NAME} PRIVATE -Wno-write-strings)
 
 target_compile_definitions(
-    ${RULE_ENGINE_PLUGIN_NAME}
+    ${IRODS_RESOURCE_PLUGIN_NAME}
     PRIVATE
     ${IRODS_COMPILE_DEFINITIONS}
     ${IRODS_COMPILE_DEFINITIONS_PRIVATE}
     IRODS_ENABLE_SYSLOG)
 
 target_include_directories(
-    ${RULE_ENGINE_PLUGIN_NAME}
+    ${IRODS_RESOURCE_PLUGIN_NAME}
     PRIVATE
     ${IRODS_INCLUDE_DIRS}
     "${IRODS_EXTERNALS_FULLPATH_BOOST}/include"
@@ -64,7 +64,7 @@ target_include_directories(
     "${IRODS_EXTERNALS_FULLPATH_FMT}/include")
 
 target_link_libraries(
-    ${RULE_ENGINE_PLUGIN_NAME}
+    ${IRODS_RESOURCE_PLUGIN_NAME}
     PRIVATE
     irods_server
     "${IRODS_EXTERNALS_FULLPATH_BOOST}/lib/libboost_filesystem.so"
@@ -72,7 +72,7 @@ target_link_libraries(
     "${IRODS_EXTERNALS_FULLPATH_FMT}/lib/libfmt.so"
     ${CMAKE_DL_LIBS})
 
-install(TARGETS ${RULE_ENGINE_PLUGIN_NAME} LIBRARY DESTINATION "${IRODS_PLUGINS_DIRECTORY}/resources")
+install(TARGETS ${IRODS_RESOURCE_PLUGIN_NAME} LIBRARY DESTINATION "${IRODS_PLUGINS_DIRECTORY}/resources")
 
 install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/packaging/test_project_template_cpp_resource_plugin.py"
         DESTINATION "${IRODS_HOME_DIRECTORY}/scripts/irods/test"
