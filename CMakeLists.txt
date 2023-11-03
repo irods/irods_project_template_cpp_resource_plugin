@@ -36,6 +36,12 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   add_compile_options($<$<COMPILE_LANGUAGE:CXX>:-fpermissive>)
 endif()
 
+set(IRODS_BUILD_WITH_WERROR OFF CACHE BOOL "Choose whether to compile with -Werror.")
+
+if (IRODS_BUILD_WITH_WERROR)
+  add_compile_options(-Werror)
+endif()
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 
 set(RULE_ENGINE_PLUGIN_NAME irods_resource_plugin-nop)
