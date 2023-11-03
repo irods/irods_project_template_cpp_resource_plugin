@@ -69,7 +69,6 @@ target_link_libraries(
     ${RULE_ENGINE_PLUGIN_NAME}
     PRIVATE
     irods_server
-    nlohmann_json::nlohmann_json
     ${IRODS_EXTERNALS_FULLPATH_BOOST}/lib/libboost_filesystem.so
     ${IRODS_EXTERNALS_FULLPATH_BOOST}/lib/libboost_system.so
     ${IRODS_EXTERNALS_FULLPATH_FMT}/lib/libfmt.so
